@@ -46,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Physics.cs" />
     <Compile Include="Classes\Platform.cs" />
     <Compile Include="Classes\PlatformController.cs" />
+    <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\Transform.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -57,6 +59,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -65,6 +70,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -92,6 +98,15 @@
     <Content Include="Images\man_shooting.png" />
     <Content Include="Images\platform.png" />
     <Content Include="Images\spring.png" />
+    <None Include="Resources\spring.png" />
+    <None Include="Resources\platform.png" />
+    <None Include="Resources\man2.png" />
+    <None Include="Resources\man_shooting.png" />
+    <None Include="Resources\man_jetpack.png" />
+    <None Include="Resources\man.png" />
+    <None Include="Resources\jetpack.png" />
+    <None Include="Resources\bullet.png" />
+    <None Include="Resources\back.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
