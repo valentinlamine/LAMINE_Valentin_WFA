@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Platform.cs" />
+    <Compile Include="Classes\PlatformController.cs" />
+    <Compile Include="Classes\Transform.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +78,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\back.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\enemies\enemy1r.png" />
+    <Content Include="Images\enemies\enemy2r.png" />
+    <Content Include="Images\enemies\enemy3r.png" />
+    <Content Include="Images\jetpack.png" />
+    <Content Include="Images\man.png" />
+    <Content Include="Images\man2.png" />
+    <Content Include="Images\man_jetpack.png" />
+    <Content Include="Images\man_shooting.png" />
+    <Content Include="Images\platform.png" />
+    <Content Include="Images\spring.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
