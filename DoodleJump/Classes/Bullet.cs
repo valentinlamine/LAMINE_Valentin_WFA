@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DoodleJump.Classes
 {
-    class Bullet
+    public class Bullet
     {
         public Physics physics;
         public Image sprite;

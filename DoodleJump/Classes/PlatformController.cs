@@ -10,6 +10,7 @@ namespace DoodleJump.Classes
     public static class PlatformController
     {
         public static List<Platform> platforms;
+        public static List<Bullet> bullets = new List<Bullet>();
         public static int startPlatformPosY = 400;
         public static int score = 0;
 
@@ -17,6 +18,12 @@ namespace DoodleJump.Classes
         {
             Platform plateform = new Platform(position);
             platforms.Add(plateform);
+        }
+
+        public static void CreateBullet(PointF pos)
+        {
+            var bullet = new Bullet(pos);
+            bullets.Add(bullet);
         }
 
         public static void GenerateStartSequence()

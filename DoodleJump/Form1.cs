@@ -60,6 +60,7 @@ namespace DoodleJump
                     break;
                 case "Space":
                     player.sprite = Properties.Resources.man_shooting;
+                    PlatformController.CreateBullet(new PointF(player.physics.transform.position.X + player.physics.transform.size.Width / 2, player.physics.transform.position.Y));
                     break;
             }
         }
@@ -70,6 +71,12 @@ namespace DoodleJump
             
             if(player.physics.transform.position.Y >= PlatformController.platforms[0].transform.position.Y + 200 )
                 Init();
+
+            if (PlatformController.bullets.Count > 0)
+            {
+                for (int i = 0; i < PlatformController.bullets.Count; i++)
+                    PlatformController.bullets[i].MoveUp();
+            }
 
             player.physics.ApplyPhysics();
             FollowPlayer();
@@ -95,6 +102,11 @@ namespace DoodleJump
             {
                 for (int i = 0; i < PlatformController.platforms.Count; i++)
                     PlatformController.platforms[i].DrawSprite(g);
+            }
+            if (PlatformController.bullets.Count > 0)
+            {
+                for (int i = 0; i < PlatformController.bullets.Count; i++)
+                    PlatformController.bullets[i].DrawSprite(g);
             }
             player.DrawSprite(g);
         }
