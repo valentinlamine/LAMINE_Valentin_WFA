@@ -93,6 +93,11 @@ namespace DoodleJump
                 var platform = PlatformController.platforms[i];
                 platform.transform.position.Y += offset;
             }
+            for (int i = 0; i < PlatformController.bullets.Count; i++)
+            {
+                var bullet = PlatformController.bullets[i];
+                bullet.physics.transform.position.Y += offset;
+            }
         }
 
         private void OnRepaint(object sender, PaintEventArgs e)

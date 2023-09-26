@@ -15,12 +15,12 @@ namespace DoodleJump.Classes
         public Bullet(PointF pos)
         {
             sprite = Properties.Resources.bullet;
-            physics = new Physics(pos, new Size(10, 10));
+            physics = new Physics(pos, new Size(15, 15));
         }
 
         public void MoveUp()
         {
-            physics.transform.position.Y -= 5;
+            physics.transform.position.Y -= 15;
         }
 
         public void DrawSprite(Graphics g)
