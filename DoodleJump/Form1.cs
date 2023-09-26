@@ -45,6 +45,7 @@ namespace DoodleJump
         private void OnKeyboardUp(object sender, KeyEventArgs e)
         {
             player.physics.dx = 0;
+            player.sprite = Properties.Resources.man2;
         }
 
         private void OnKeyboardPressed(object sender, KeyEventArgs e)
@@ -56,6 +57,9 @@ namespace DoodleJump
                     break;
                 case "Left":
                     player.physics.dx = -6;
+                    break;
+                case "Space":
+                    player.sprite = Properties.Resources.man_shooting;
                     break;
             }
         }
