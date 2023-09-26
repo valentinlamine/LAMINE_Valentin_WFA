@@ -98,6 +98,11 @@ namespace DoodleJump
                 var bullet = PlatformController.bullets[i];
                 bullet.physics.transform.position.Y += offset;
             }
+            for (int i = 0; i < PlatformController.enemies.Count; i++)
+            {
+                var enemy = PlatformController.enemies[i];
+                enemy.physics.transform.position.Y += offset;
+            }
         }
 
         private void OnRepaint(object sender, PaintEventArgs e)
@@ -112,6 +117,11 @@ namespace DoodleJump
             {
                 for (int i = 0; i < PlatformController.bullets.Count; i++)
                     PlatformController.bullets[i].DrawSprite(g);
+            }
+            if (PlatformController.enemies.Count > 0)
+            {
+                for (int i = 0; i < PlatformController.enemies.Count; i++)
+                    PlatformController.enemies[i].DrawSprite(g);
             }
             player.DrawSprite(g);
         }

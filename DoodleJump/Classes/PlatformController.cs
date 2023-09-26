@@ -11,6 +11,7 @@ namespace DoodleJump.Classes
     {
         public static List<Platform> platforms;
         public static List<Bullet> bullets = new List<Bullet>();
+        public static List<Enemy> enemies = new List<Enemy>();
         public static int startPlatformPosY = 400;
         public static int score = 0;
 
@@ -48,6 +49,18 @@ namespace DoodleJump.Classes
             PointF position = new PointF(x, startPlatformPosY);
             Platform platform = new Platform(position);
             platforms.Add(platform);
+
+            var c = r.Next(1, 5);
+            if (c == 1)
+            {
+                CreateEnemy(platform);
+            }
+        }
+
+        public static void CreateEnemy(Platform platform)
+        {
+            var enemy = new Enemy(new PointF(platform.transform.position.X + platform.SizeX/2, platform.transform.position.Y));
+            enemies.Add(enemy);
         }
 
         public static void ClearPlatforms()

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Bullet.cs" />
+    <Compile Include="Classes\Enemy.cs" />
     <Compile Include="Classes\Physics.cs" />
     <Compile Include="Classes\Platform.cs" />
     <Compile Include="Classes\PlatformController.cs" />
@@ -99,6 +100,9 @@
     <Content Include="Images\man_shooting.png" />
     <Content Include="Images\platform.png" />
     <Content Include="Images\spring.png" />
+    <None Include="Resources\enemy3r.png" />
+    <None Include="Resources\enemy2r.png" />
+    <None Include="Resources\enemy1r.png" />
     <None Include="Resources\spring.png" />
     <None Include="Resources\platform.png" />
     <None Include="Resources\man2.png" />
