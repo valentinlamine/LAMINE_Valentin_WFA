@@ -30,13 +30,15 @@ namespace DoodleJump.Classes
 
         public void CalculatePhysics()
         {
-            if (dx!=0)
+            if (dx != 0)
             {
                 transform.position.X += dx;
             }
             if (transform.position.Y < 700) { 
                 transform.position.Y += gravity;
                 gravity += a;
+
+                Collide();
             }
         }
 
