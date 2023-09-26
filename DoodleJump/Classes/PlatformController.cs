@@ -59,7 +59,7 @@ namespace DoodleJump.Classes
 
         public static void CreateEnemy(Platform platform)
         {
-            var enemy = new Enemy(new PointF(platform.transform.position.X + platform.SizeX/2, platform.transform.position.Y));
+            var enemy = new Enemy(new PointF(platform.transform.position.X + (platform.SizeX/2)/2, platform.transform.position.Y-40));
             enemies.Add(enemy);
         }
 
