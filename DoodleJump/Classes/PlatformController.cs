@@ -51,17 +51,28 @@ namespace DoodleJump.Classes
             Platform platform = new Platform(position);
             platforms.Add(platform);
 
-            var c = r.Next(1, 10);
-            if (c == 1)
+            var c = r.Next(1, 2);
+
+            switch (c)
             {
-                CreateEnemy(platform);
+                case 1:
+                    c = r.Next(1, 10);
+                    if (c == 1)
+                    {
+                        CreateEnemy(platform);
+                    }
+                    break;
+                case 2:
+                    c = r.Next(1, 10);
+                    if (c == 1)
+                    {
+                        CreateBonus(platform);
+                    }
+                    break;
             }
 
-            c = r.Next(1, 10);
-            if (c == 1)
-            {
-                CreateBonus(platform);
-            }
+            
+            
         }
 
         public static void CreateBonus(Platform platform)

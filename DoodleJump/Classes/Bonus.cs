@@ -18,11 +18,11 @@ namespace DoodleJump.Classes
         {
             switch (type)
             {
-                case 0:
+                case 1:
                     sprite = Properties.Resources.spring;
                     physics = new Physics(pos, new Size(15, 15));
                     break;
-                case 1:
+                case 2:
                     sprite = Properties.Resources.jetpack;
                     physics = new Physics(pos, new Size(30, 30));
                     break;
