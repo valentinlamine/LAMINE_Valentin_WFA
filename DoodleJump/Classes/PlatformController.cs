@@ -50,7 +50,7 @@ namespace DoodleJump.Classes
             Platform platform = new Platform(position);
             platforms.Add(platform);
 
-            var c = r.Next(1, 5);
+            var c = r.Next(1, 10);
             if (c == 1)
             {
                 CreateEnemy(platform);
@@ -59,8 +59,25 @@ namespace DoodleJump.Classes
 
         public static void CreateEnemy(Platform platform)
         {
-            var enemy = new Enemy(new PointF(platform.transform.position.X + (platform.SizeX/2)/2, platform.transform.position.Y-40));
-            enemies.Add(enemy);
+            Random r = new Random();
+            var enemyType = r.Next(1, 4);
+
+            switch (enemyType) {
+                case 1:
+                    var enemy = new Enemy(new PointF(platform.transform.position.X + (platform.SizeX / 2) - 20, platform.transform.position.Y - 40),enemyType);
+                    enemies.Add(enemy);
+                    break;
+                case 2:
+                    enemy = new Enemy(new PointF(platform.transform.position.X + (platform.SizeX / 2) - 35, platform.transform.position.Y - 50), enemyType);
+                    enemies.Add(enemy);
+                    break;
+                case 3:
+                    enemy = new Enemy(new PointF(platform.transform.position.X + (platform.SizeX / 2) - 35, platform.transform.position.Y - 60), enemyType);
+                    enemies.Add(enemy);
+                    break;
+            }
+
+            
         }
 
         public static void ClearPlatforms()
@@ -70,6 +87,13 @@ namespace DoodleJump.Classes
                 if (platforms[i].transform.position.Y>=700)
                 {
                     platforms.RemoveAt(i);
+                }
+            }
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (enemies[i].physics.transform.position.Y >= 700)
+                {
+                    enemies.RemoveAt(i);
                 }
             }
         }

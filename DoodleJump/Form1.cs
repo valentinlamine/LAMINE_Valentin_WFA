@@ -39,6 +39,8 @@ namespace DoodleJump
             PlatformController.startPlatformPosY = 400;
             PlatformController.score = 0;
             PlatformController.GenerateStartSequence();
+            PlatformController.bullets.Clear();
+            PlatformController.enemies.Clear();
             player = new Player();
         }
 
