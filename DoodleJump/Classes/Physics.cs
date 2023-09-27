@@ -14,6 +14,7 @@ namespace DoodleJump.Classes
         float a;
 
         public float dx;
+        bool usedBonus = false;
 
         public Physics(PointF position, Size size)
         {
@@ -34,27 +35,67 @@ namespace DoodleJump.Classes
             {
                 transform.position.X += dx;
             }
-            if (transform.position.Y < 700) { 
+            if (transform.position.Y < 700) 
+            { 
                 transform.position.Y += gravity;
                 gravity += a;
+
+                if (gravity > -20 && usedBonus)
+                {
+                    PlatformController.GenerateRandomPlatform();
+                    PlatformController.GenerateStartSequence();
+                    PlatformController.startPlatformPosY = 200;
+                    usedBonus = false;
+                }
 
                 Collide();
             }
         }
 
-        public bool StandartCollidePlayerWithMonsters()
+        public bool StandartCollidePlayerWithObjects(bool forMonsters, bool forBonuses)
         {
-            for (int i = 0; i < PlatformController.enemies.Count; i++)
+            if (forMonsters)
             {
-                var enemy = PlatformController.enemies[i];
-                PointF delta = new PointF();
-                delta.X = (transform.position.X + transform.size.Width / 2) - (enemy.physics.transform.position.X + enemy.physics.transform.size.Width / 2);
-                delta.Y = (transform.position.Y + transform.size.Height / 2) - (enemy.physics.transform.position.Y + enemy.physics.transform.size.Height / 2);
-                if (Math.Abs(delta.X) <= transform.size.Width / 2 + enemy.physics.transform.size.Width / 2)
+                for (int i = 0; i < PlatformController.enemies.Count; i++)
                 {
-                    if (Math.Abs(delta.Y) <= transform.size.Height / 2 + enemy.physics.transform.size.Height / 2)
+                    var enemy = PlatformController.enemies[i];
+                    PointF delta = new PointF();
+                    delta.X = (transform.position.X + transform.size.Width / 2) - (enemy.physics.transform.position.X + enemy.physics.transform.size.Width / 2);
+                    delta.Y = (transform.position.Y + transform.size.Height / 2) - (enemy.physics.transform.position.Y + enemy.physics.transform.size.Height / 2);
+                    if (Math.Abs(delta.X) <= transform.size.Width / 2 + enemy.physics.transform.size.Width / 2)
                     {
-                        return true;
+                        if (Math.Abs(delta.Y) <= transform.size.Height / 2 + enemy.physics.transform.size.Height / 2)
+                        {
+                            if (!usedBonus)
+                                return true;
+                        }
+                    }
+                }
+            }
+            if (forBonuses)
+            {
+                for (int i = 0; i < PlatformController.bonuses.Count; i++)
+                {
+                    var bonus = PlatformController.bonuses[i];
+                    PointF delta = new PointF();
+                    delta.X = (transform.position.X + transform.size.Width / 2) - (bonus.physics.transform.position.X + bonus.physics.transform.size.Width / 2);
+                    delta.Y = (transform.position.Y + transform.size.Height / 2) - (bonus.physics.transform.position.Y + bonus.physics.transform.size.Height / 2);
+                    if (Math.Abs(delta.X) <= transform.size.Width / 2 + bonus.physics.transform.size.Width / 2)
+                    {
+                        if (Math.Abs(delta.Y) <= transform.size.Height / 2 + bonus.physics.transform.size.Height / 2)
+                        {
+                            if (bonus.type == 1 && !usedBonus)
+                            {
+                                usedBonus = true;
+                                AddForce(-30);
+                            }
+                            if (bonus.type == 2 && !usedBonus) 
+                            {
+                                usedBonus = true;
+                                AddForce(-60);
+                            }
+                            return true;
+                        }
                     }
                 }
             }
@@ -105,9 +146,9 @@ namespace DoodleJump.Classes
             }
         }
 
-        public void AddForce()
+        public void AddForce(int force = -10)
         {
-            gravity = -10;
+            gravity = force;
 
         }
     }

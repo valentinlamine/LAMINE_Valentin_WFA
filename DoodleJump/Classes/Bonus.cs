@@ -27,6 +27,7 @@ namespace DoodleJump.Classes
                     physics = new Physics(pos, new Size(30, 30));
                     break;
             }
+            this.type = type;
             
         }
 

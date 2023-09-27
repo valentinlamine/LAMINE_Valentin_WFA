@@ -40,6 +40,7 @@ namespace DoodleJump
             PlatformController.score = 0;
             PlatformController.GenerateStartSequence();
             PlatformController.bullets.Clear();
+            PlatformController.bonuses.Clear();
             PlatformController.enemies.Clear();
             player = new Player();
         }
@@ -76,8 +77,10 @@ namespace DoodleJump
         {
             this.Text = "Doodle Jump: Score - " + PlatformController.score;
             
-            if( (player.physics.transform.position.Y >= PlatformController.platforms[0].transform.position.Y + 200) || player.physics.StandartCollidePlayerWithMonsters())
+            if( (player.physics.transform.position.Y >= PlatformController.platforms[0].transform.position.Y + 200) || player.physics.StandartCollidePlayerWithObjects(true, false))
                 Init();
+
+            player.physics.StandartCollidePlayerWithObjects(false, true);
 
             if (PlatformController.bullets.Count > 0)
             {

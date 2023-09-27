@@ -63,7 +63,7 @@ namespace DoodleJump.Classes
                     }
                     break;
                 case 2:
-                    c = r.Next(1, 20);
+                    c = r.Next(1, 10);
                     if (c == 1)
                     {
                         CreateBonus(platform);
