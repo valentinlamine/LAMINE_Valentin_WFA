@@ -34,6 +34,7 @@ namespace DoodleJump
 
         public void Init()
         {
+            
             PlatformController.platforms = new System.Collections.Generic.List<Platform>();
             PlatformController.AddPlatform(new System.Drawing.PointF(100, 400));
             PlatformController.startPlatformPosY = 400;
@@ -43,6 +44,7 @@ namespace DoodleJump
             PlatformController.bonuses.Clear();
             PlatformController.enemies.Clear();
             player = new Player();
+            
         }
 
         private void OnKeyboardUp(object sender, KeyEventArgs e)
@@ -78,6 +80,7 @@ namespace DoodleJump
             this.Text = "Doodle Jump: Score - " + PlatformController.score;
             
             if( (player.physics.transform.position.Y >= PlatformController.platforms[0].transform.position.Y + 200) || player.physics.StandartCollidePlayerWithObjects(true, false))
+                
                 Init();
 
             player.physics.StandartCollidePlayerWithObjects(false, true);
@@ -115,6 +118,7 @@ namespace DoodleJump
         {
             int offset = 400 - (int)player.physics.transform.position.Y;
             player.physics.transform.position.Y += offset;
+
             for (int i = 0; i < PlatformController.platforms.Count; i++)
             {
                 var platform = PlatformController.platforms[i];
@@ -161,6 +165,11 @@ namespace DoodleJump
                     PlatformController.bonuses[i].DrawSprite(g);
             }
             player.DrawSprite(g);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

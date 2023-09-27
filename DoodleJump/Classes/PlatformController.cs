@@ -71,9 +71,6 @@ namespace DoodleJump.Classes
                     }
                     break;
             }
-
-            
-            
         }
 
         public static void CreateBonus(Platform platform)

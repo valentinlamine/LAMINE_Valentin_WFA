@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace DoodleJump.Classes
 {
@@ -88,11 +89,15 @@ namespace DoodleJump.Classes
                             {
                                 usedBonus = true;
                                 AddForce(-30);
+                                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.spring1);
+                                soundPlayer.Play();
                             }
                             if (bonus.type == 2 && !usedBonus) 
                             {
                                 usedBonus = true;
                                 AddForce(-60);
+                                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.jetpack1);
+                                soundPlayer.Play();
                             }
                             return true;
                         }
@@ -134,8 +139,10 @@ namespace DoodleJump.Classes
                         if (gravity > 0) 
                         {
                             AddForce();
+                            SoundPlayer sound = new SoundPlayer(Properties.Resources.jump);
+                            sound.Play();
                             if (!platform.isTouchedByPlayer)
-                            {
+                            {   
                                 PlatformController.score += 20;
                                 PlatformController.GenerateRandomPlatform();
                                 platform.isTouchedByPlayer = true;

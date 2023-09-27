@@ -60,10 +60,19 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -101,6 +110,9 @@
     <Content Include="Images\man_shooting.png" />
     <Content Include="Images\platform.png" />
     <Content Include="Images\spring.png" />
+    <None Include="sound\jetpack.wav" />
+    <None Include="sound\spring.wav" />
+    <None Include="sound\jump.wav" />
     <None Include="Resources\enemy3r.png" />
     <None Include="Resources\enemy2r.png" />
     <None Include="Resources\enemy1r.png" />
