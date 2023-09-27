@@ -12,6 +12,7 @@ namespace DoodleJump.Classes
         public static List<Platform> platforms;
         public static List<Bullet> bullets = new List<Bullet>();
         public static List<Enemy> enemies = new List<Enemy>();
+        public static List<Bonus> bonuses = new List<Bonus>();
         public static int startPlatformPosY = 400;
         public static int score = 0;
 
@@ -55,6 +56,30 @@ namespace DoodleJump.Classes
             {
                 CreateEnemy(platform);
             }
+
+            c = r.Next(1, 10);
+            if (c == 1)
+            {
+                CreateBonus(platform);
+            }
+        }
+
+        public static void CreateBonus(Platform platform)
+        {
+            Random r = new Random();
+            var bonusType = r.Next(1, 3);
+
+            switch (bonusType)
+            {
+                case 1:
+                    var bonus = new Bonus(new PointF(platform.transform.position.X + (platform.SizeX / 2) - 7, platform.transform.position.Y - 15), bonusType);
+                    bonuses.Add(bonus);
+                    break;
+                case 2:
+                    bonus = new Bonus(new PointF(platform.transform.position.X + (platform.SizeX / 2) - 15, platform.transform.position.Y - 30), bonusType);
+                    bonuses.Add(bonus);
+                    break;
+            }
         }
 
         public static void CreateEnemy(Platform platform)
@@ -95,6 +120,13 @@ namespace DoodleJump.Classes
                 if (platforms[i].transform.position.Y>=700)
                 {
                     platforms.RemoveAt(i);
+                }
+            }
+            for (int i = 0; i < bonuses.Count; i++)
+            {
+                if (bonuses[i].physics.transform.position.Y >= 700)
+                {
+                    bonuses.RemoveAt(i);
                 }
             }
             for (int i = 0; i < enemies.Count; i++)

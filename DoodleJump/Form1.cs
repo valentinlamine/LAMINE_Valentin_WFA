@@ -68,7 +68,6 @@ namespace DoodleJump
                     break;
                 case "Space":
                     player.sprite = Properties.Resources.man_shooting;
-                    //PlatformController.CreateBullet(new PointF(player.physics.transform.position.X + player.physics.transform.size.Width / 2, player.physics.transform.position.Y));
                     break;
             }
         }
@@ -128,6 +127,11 @@ namespace DoodleJump
                 var enemy = PlatformController.enemies[i];
                 enemy.physics.transform.position.Y += offset;
             }
+            for (int i = 0; i < PlatformController.bonuses.Count; i++)
+            {
+                var bonus = PlatformController.bonuses[i];
+                bonus.physics.transform.position.Y += offset;
+            }
         }
 
         private void OnRepaint(object sender, PaintEventArgs e)
@@ -147,6 +151,11 @@ namespace DoodleJump
             {
                 for (int i = 0; i < PlatformController.enemies.Count; i++)
                     PlatformController.enemies[i].DrawSprite(g);
+            }
+            if (PlatformController.bonuses.Count > 0)
+            {
+                for (int i = 0; i < PlatformController.bonuses.Count; i++)
+                    PlatformController.bonuses[i].DrawSprite(g);
             }
             player.DrawSprite(g);
         }
