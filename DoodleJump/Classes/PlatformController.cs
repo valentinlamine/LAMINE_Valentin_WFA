@@ -51,7 +51,7 @@ namespace DoodleJump.Classes
             Platform platform = new Platform(position);
             platforms.Add(platform);
 
-            var c = r.Next(1, 2);
+            var c = r.Next(1, 3);
 
             switch (c)
             {
@@ -63,7 +63,7 @@ namespace DoodleJump.Classes
                     }
                     break;
                 case 2:
-                    c = r.Next(1, 10);
+                    c = r.Next(1, 20);
                     if (c == 1)
                     {
                         CreateBonus(platform);
