@@ -45,6 +45,7 @@ namespace DoodleJump.Classes
 
         public static void GenerateRandomPlatform()
         {
+            ClearPlatforms();
             Random r = new Random();
             int x = r.Next(0,270);
             PointF position = new PointF(x, startPlatformPosY);
