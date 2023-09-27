@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -55,6 +56,8 @@ namespace DoodleJump
             {
                 case "Space":
                     PlatformController.CreateBullet(new PointF(player.physics.transform.position.X + player.physics.transform.size.Width / 2, player.physics.transform.position.Y));
+                    SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.thraw);
+                    soundPlayer.Play();
                     break;
             }
         }

@@ -68,7 +68,9 @@ namespace DoodleJump.Classes
                         if (Math.Abs(delta.Y) <= transform.size.Height / 2 + enemy.physics.transform.size.Height / 2)
                         {
                             if (!usedBonus)
+                            {
                                 return true;
+                            }
                         }
                     }
                 }
@@ -119,6 +121,8 @@ namespace DoodleJump.Classes
                 {
                     if (Math.Abs(delta.Y) <= transform.size.Height / 2 + bullet.physics.transform.size.Height / 2)
                     {
+                        SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.monsterpogodak);
+                        soundPlayer.Play();
                         PlatformController.RemoveBullet(i);
                         return true;
                     }

@@ -110,6 +110,8 @@
     <Content Include="Images\man_shooting.png" />
     <Content Include="Images\platform.png" />
     <Content Include="Images\spring.png" />
+    <None Include="sound\monsterpogodak.wav" />
+    <None Include="sound\thraw.wav" />
     <None Include="sound\jetpack.wav" />
     <None Include="sound\spring.wav" />
     <None Include="sound\jump.wav" />
