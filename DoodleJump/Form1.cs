@@ -78,8 +78,15 @@ namespace DoodleJump
             {
                 for (int i = 0; i < PlatformController.bullets.Count; i++)
                     PlatformController.bullets[i].MoveUp();
+                for (int i = 0; i < PlatformController.enemies.Count; i++)
+                {
+                    if (PlatformController.enemies[i].physics.StandartCollide())
+                    {
+                        PlatformController.RemoveEnemy(i);
+                        break;
+                    }
+                }
             }
-
             player.physics.ApplyPhysics();
             FollowPlayer();
             

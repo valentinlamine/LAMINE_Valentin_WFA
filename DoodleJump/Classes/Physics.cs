@@ -42,6 +42,26 @@ namespace DoodleJump.Classes
             }
         }
 
+        public bool StandartCollide()
+        {
+            for (int i = 0; i < PlatformController.bullets.Count; i++)
+            {
+                var bullet = PlatformController.bullets[i];
+                PointF delta = new PointF();
+                delta.X = (transform.position.X + transform.size.Width / 2) - (bullet.physics.transform.position.X + bullet.physics.transform.size.Width / 2);
+                delta.Y = (transform.position.Y + transform.size.Height / 2) - (bullet.physics.transform.position.Y + bullet.physics.transform.size.Height / 2);
+                if (Math.Abs(delta.X) <= transform.size.Width / 2 + bullet.physics.transform.size.Width / 2)
+                {
+                    if (Math.Abs(delta.Y) <= transform.size.Height / 2 + bullet.physics.transform.size.Height / 2)
+                    {
+                        PlatformController.RemoveBullet(i);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         public void Collide()
         {
             for(int i=0; i < PlatformController.platforms.Count; i++)

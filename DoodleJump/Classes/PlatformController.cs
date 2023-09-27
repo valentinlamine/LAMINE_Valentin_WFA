@@ -76,8 +76,16 @@ namespace DoodleJump.Classes
                     enemies.Add(enemy);
                     break;
             }
+        }
 
-            
+        public static void RemoveEnemy(int i)
+        {
+            enemies.RemoveAt(i);
+        }
+
+        public static void RemoveBullet(int i)
+        {
+            bullets.RemoveAt(i);
         }
 
         public static void ClearPlatforms()
