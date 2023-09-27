@@ -48,6 +48,12 @@ namespace DoodleJump
         {
             player.physics.dx = 0;
             player.sprite = Properties.Resources.man2;
+            switch (e.KeyCode.ToString())
+            {
+                case "Space":
+                    PlatformController.CreateBullet(new PointF(player.physics.transform.position.X + player.physics.transform.size.Width / 2, player.physics.transform.position.Y));
+                    break;
+            }
         }
 
         private void OnKeyboardPressed(object sender, KeyEventArgs e)
@@ -62,7 +68,7 @@ namespace DoodleJump
                     break;
                 case "Space":
                     player.sprite = Properties.Resources.man_shooting;
-                    PlatformController.CreateBullet(new PointF(player.physics.transform.position.X + player.physics.transform.size.Width / 2, player.physics.transform.position.Y));
+                    //PlatformController.CreateBullet(new PointF(player.physics.transform.position.X + player.physics.transform.size.Width / 2, player.physics.transform.position.Y));
                     break;
             }
         }
@@ -71,19 +77,29 @@ namespace DoodleJump
         {
             this.Text = "Doodle Jump: Score - " + PlatformController.score;
             
-            if(player.physics.transform.position.Y >= PlatformController.platforms[0].transform.position.Y + 200 )
+            if( (player.physics.transform.position.Y >= PlatformController.platforms[0].transform.position.Y + 200) || player.physics.StandartCollidePlayerWithMonsters())
                 Init();
 
             if (PlatformController.bullets.Count > 0)
             {
                 for (int i = 0; i < PlatformController.bullets.Count; i++)
-                    PlatformController.bullets[i].MoveUp();
-                for (int i = 0; i < PlatformController.enemies.Count; i++)
                 {
-                    if (PlatformController.enemies[i].physics.StandartCollide())
+                    if (Math.Abs(PlatformController.bullets[i].physics.transform.position.Y - player.physics.transform.position.Y) > 500)
                     {
-                        PlatformController.RemoveEnemy(i);
-                        break;
+                        PlatformController.RemoveBullet(i);
+                        continue;
+                    }
+                        PlatformController.bullets[i].MoveUp();
+                }
+                if (PlatformController.enemies.Count > 0)
+                {
+                    for (int i = 0; i < PlatformController.enemies.Count; i++)
+                    {
+                        if (PlatformController.enemies[i].physics.StandartCollide())
+                        {
+                            PlatformController.RemoveEnemy(i);
+                            break;
+                        }
                     }
                 }
             }

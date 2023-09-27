@@ -42,6 +42,25 @@ namespace DoodleJump.Classes
             }
         }
 
+        public bool StandartCollidePlayerWithMonsters()
+        {
+            for (int i = 0; i < PlatformController.enemies.Count; i++)
+            {
+                var enemy = PlatformController.enemies[i];
+                PointF delta = new PointF();
+                delta.X = (transform.position.X + transform.size.Width / 2) - (enemy.physics.transform.position.X + enemy.physics.transform.size.Width / 2);
+                delta.Y = (transform.position.Y + transform.size.Height / 2) - (enemy.physics.transform.position.Y + enemy.physics.transform.size.Height / 2);
+                if (Math.Abs(delta.X) <= transform.size.Width / 2 + enemy.physics.transform.size.Width / 2)
+                {
+                    if (Math.Abs(delta.Y) <= transform.size.Height / 2 + enemy.physics.transform.size.Height / 2)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         public bool StandartCollide()
         {
             for (int i = 0; i < PlatformController.bullets.Count; i++)
