@@ -161,6 +161,16 @@ namespace DoodleJump.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap man_jetpack_right {
+            get {
+                object obj = ResourceManager.GetObject("man_jetpack_right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap man_shooting {
             get {
                 object obj = ResourceManager.GetObject("man_shooting", resourceCulture);

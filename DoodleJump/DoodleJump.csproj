@@ -108,6 +108,7 @@
     <Content Include="Images\man2.png" />
     <None Include="Images\man2_right.png" />
     <Content Include="Images\man_jetpack.png" />
+    <None Include="Images\man_jetpack_right.png" />
     <Content Include="Images\man_shooting.png" />
     <Content Include="Images\platform.png" />
     <Content Include="Images\spring.png" />

@@ -10,25 +10,31 @@ namespace DoodleJump.Classes
 {
     public static class PlatformController
     {
+        // Lists to store game objects
         public static List<Platform> platforms;
         public static List<Bullet> bullets = new List<Bullet>();
         public static List<Enemy> enemies = new List<Enemy>();
         public static List<Bonus> bonuses = new List<Bonus>();
+
+        // Initial position of the first platform
         public static int startPlatformPosY = 1000;
         public static int score = 0;
 
+        // Add a platform to the list
         public static void AddPlatform(PointF position)
         {
-            Platform plateform = new Platform(position);
-            platforms.Add(plateform);
+            Platform platform = new Platform(position);
+            platforms.Add(platform);
         }
 
+        // Create a bullet and add it to the list
         public static void CreateBullet(PointF pos)
         {
             var bullet = new Bullet(pos);
             bullets.Add(bullet);
         }
 
+        // Generate the initial sequence of platforms
         public static void GenerateStartSequence(int number = 15)
         {
             Random r = new Random();
@@ -41,16 +47,16 @@ namespace DoodleJump.Classes
                 PointF position = new PointF(x, startPlatformPosY);
                 Platform platform = new Platform(position);
                 platforms.Add(platform);
-
             }
         }
 
+        // Generate a random platform during gameplay
         public static void GenerateRandomPlatform()
         {
             Debug.WriteLine(startPlatformPosY);
             ClearPlatforms();
             Random r = new Random();
-            int x = r.Next(0,280);
+            int x = r.Next(0, 280);
             PointF position = new PointF(x, startPlatformPosY);
             Platform platform = new Platform(position);
             platforms.Add(platform);
@@ -76,6 +82,7 @@ namespace DoodleJump.Classes
             }
         }
 
+        // Create a bonus and add it to the list
         public static void CreateBonus(Platform platform)
         {
             Random r = new Random();
@@ -94,14 +101,16 @@ namespace DoodleJump.Classes
             }
         }
 
+        // Create an enemy and add it to the list
         public static void CreateEnemy(Platform platform)
         {
             Random r = new Random();
             var enemyType = r.Next(1, 4);
 
-            switch (enemyType) {
+            switch (enemyType)
+            {
                 case 1:
-                    var enemy = new Enemy(new PointF(platform.transform.position.X + (platform.SizeX / 2) - 20, platform.transform.position.Y - 40),enemyType);
+                    var enemy = new Enemy(new PointF(platform.transform.position.X + (platform.SizeX / 2) - 20, platform.transform.position.Y - 40), enemyType);
                     enemies.Add(enemy);
                     break;
                 case 2:
@@ -115,21 +124,24 @@ namespace DoodleJump.Classes
             }
         }
 
+        // Remove an enemy from the list
         public static void RemoveEnemy(int i)
         {
             enemies.RemoveAt(i);
         }
 
+        // Remove a bullet from the list
         public static void RemoveBullet(int i)
         {
             bullets.RemoveAt(i);
         }
 
+        // Clear objects that are out of bounds
         public static void ClearPlatforms()
         {
-            for (int i = 0;i < platforms.Count; i++)
+            for (int i = 0; i < platforms.Count; i++)
             {
-                if (platforms[i].transform.position.Y>=700)
+                if (platforms[i].transform.position.Y >= 700)
                 {
                     platforms.RemoveAt(i);
                 }

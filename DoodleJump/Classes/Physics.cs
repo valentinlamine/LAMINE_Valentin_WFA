@@ -15,7 +15,7 @@ namespace DoodleJump.Classes
         float a;
 
         public float dx;
-        bool usedBonus = false;
+        public bool usedBonus = false;
 
         public Physics(PointF position, Size size)
         {
