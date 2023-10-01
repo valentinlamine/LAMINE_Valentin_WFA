@@ -11,6 +11,8 @@ namespace DoodleJump.Classes
     {
         public Physics physics;
         public Image sprite;
+        public bool IsRight;
+        public bool IsShooting;
 
         public Player()
         {
@@ -22,5 +24,19 @@ namespace DoodleJump.Classes
         {
             g.DrawImage(sprite, physics.transform.position.X, physics.transform.position.Y, physics.transform.size.Width, physics.transform.size.Height);
         }
+
+        public void ChangeSprite(bool isMovingRight)
+        {
+            // Load different sprites based on the direction
+            if (isMovingRight)
+            {
+                sprite = Properties.Resources.man2_right; // Right-facing sprite
+            }
+            else
+            {
+                sprite = Properties.Resources.man2; // Left-facing sprite
+            }
+        }
+
     }
 }

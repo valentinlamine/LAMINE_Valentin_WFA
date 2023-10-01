@@ -51,13 +51,23 @@ namespace DoodleJump
         private void OnKeyboardUp(object sender, KeyEventArgs e)
         {
             player.physics.dx = 0;
-            player.sprite = Properties.Resources.man2;
+            if (player.IsShooting)
+            {
+                if (player.IsRight)
+                {
+                    player.sprite = Properties.Resources.man2_right;
+                } else
+                {
+                    player.sprite = Properties.Resources.man2;
+                }
+            }
             switch (e.KeyCode.ToString())
             {
                 case "Space":
                     PlatformController.CreateBullet(new PointF(player.physics.transform.position.X + player.physics.transform.size.Width / 2, player.physics.transform.position.Y));
                     SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.thraw);
                     soundPlayer.Play();
+                    player.IsShooting = false;
                     break;
             }
         }
@@ -68,12 +78,24 @@ namespace DoodleJump
             {
                 case "Right":
                     player.physics.dx = 6;
+                    if (!player.IsRight)
+                    {
+                        player.ChangeSprite(true);
+                        player.IsRight = true;
+                    }
                     break;
                 case "Left":
                     player.physics.dx = -6;
+                    if (player.IsRight)
+                    {
+                        player.ChangeSprite(false);
+                        player.IsRight = false;
+                    }
+                    
                     break;
                 case "Space":
                     player.sprite = Properties.Resources.man_shooting;
+                    player.IsShooting = true;
                     break;
             }
         }
