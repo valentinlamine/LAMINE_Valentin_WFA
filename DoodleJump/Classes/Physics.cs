@@ -44,7 +44,7 @@ namespace DoodleJump.Classes
                 if (gravity > -20 && usedBonus)
                 {
                     PlatformController.GenerateRandomPlatform();
-                    PlatformController.GenerateStartSequence();
+                    PlatformController.GenerateStartSequence(15);
                     PlatformController.startPlatformPosY = 200;
                     usedBonus = false;
                 }

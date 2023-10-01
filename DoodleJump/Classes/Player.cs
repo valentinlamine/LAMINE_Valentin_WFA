@@ -38,5 +38,19 @@ namespace DoodleJump.Classes
             }
         }
 
+        public void TeleportIfOutOfBounds(int screenWidth)
+        {
+            // Check if the player is out of the screen on the left side
+            if (physics.transform.position.X < 0)
+            {
+                physics.transform.position.X = screenWidth - physics.transform.size.Width;
+            }
+            // Check if the player is out of the screen on the right side
+            else if (physics.transform.position.X + physics.transform.size.Width > screenWidth)
+            {
+                physics.transform.position.X = 0;
+            }
+        }
+
     }
 }

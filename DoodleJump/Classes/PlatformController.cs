@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace DoodleJump.Classes
         public static List<Bullet> bullets = new List<Bullet>();
         public static List<Enemy> enemies = new List<Enemy>();
         public static List<Bonus> bonuses = new List<Bonus>();
-        public static int startPlatformPosY = 400;
+        public static int startPlatformPosY = 1000;
         public static int score = 0;
 
         public static void AddPlatform(PointF position)
@@ -28,13 +29,14 @@ namespace DoodleJump.Classes
             bullets.Add(bullet);
         }
 
-        public static void GenerateStartSequence()
+        public static void GenerateStartSequence(int number = 15)
         {
             Random r = new Random();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < number; i++)
             {
-                int x = r.Next(0, 270);
-                int y = r.Next(30, 40);
+                Debug.WriteLine(startPlatformPosY);
+                int x = r.Next(0, 280);
+                int y = r.Next(25, 40);
                 startPlatformPosY -= y;
                 PointF position = new PointF(x, startPlatformPosY);
                 Platform platform = new Platform(position);
@@ -45,9 +47,10 @@ namespace DoodleJump.Classes
 
         public static void GenerateRandomPlatform()
         {
+            Debug.WriteLine(startPlatformPosY);
             ClearPlatforms();
             Random r = new Random();
-            int x = r.Next(0,270);
+            int x = r.Next(0,280);
             PointF position = new PointF(x, startPlatformPosY);
             Platform platform = new Platform(position);
             platforms.Add(platform);

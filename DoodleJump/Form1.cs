@@ -135,7 +135,10 @@ namespace DoodleJump
             }
             player.physics.ApplyPhysics();
             FollowPlayer();
-            
+
+            // Call the function to teleport the player if they go out of bounds
+            player.TeleportIfOutOfBounds(this.Width);
+
             Invalidate();
         }
 
